@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Delish Bites Restaurant</title>
+  <link rel="stylesheet" href="/PROJECT PART 2/app.css" />
+  <!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
+<!-- Replace 'your-kit-id' with your actual Font Awesome kit or use CDN below: -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body >
+<!-- Video Background -->
+<div class="video-container">
+  <video autoplay loop muted>
+    <source src="/PROJECT PART 2/IMAGE/Ice cream video 7 WhatsApp Video 2025-01-17 at 12.54.51_8218930c.mp4" type="video/mp4" />
+    Your browser does not support video
+  </video>
+</div>
+
+<!-- Navbar -->
+<header>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="/PROJECT PART 2/IMAGE/logo.svg" alt="Logo" />
+      <h2>Delish <span>Bites</span></h2>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="Index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
+      <li><a href="#gallery"><i class="fa-solid fa-images"></i> Gallery</a></li>
+      <li><a href="#services"><i class="fa-solid fa-briefcase"></i> Services</a></li>
+      <li><a href="#contact"><i class="fa-solid fa-phone"></i> Contact</a></li>
+      <li><a href="#"><i class="fa-solid fa-cart-shopping"></i> Cart</a></li>
+    </ul>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="side">
+      <a href="#" class="aa"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+      <a href="Login.html" class="log"><button>Login</button></a>
+      <a href="Register.html" class="sign"><button>Register</button></a>
+    </div>
+
+           <div class="theme-toggle">
+  <i class="fas fa-sun" id="lightModeIcon"></i>
+  <i class="fas fa-moon" id="darkModeIcon"></i>
+</div>
+
+  </nav>
+</header>
+
+
+<!-- Welcome Section -->
+<div class="welcome" id="home">
+  <h1>DELISH BITES</h1>
+  <p>Experience the taste of excellence. Fresh ingredients, delicious recipes, and a cozy atmosphere await you.</p>
+  <a href="#about">Learn More About Us</a>
+</div>
+<br>
+
+  <section class="about-section" id="about">
+  <h2 class="section-title">About Us</h2>
+  <div class="about-grid">
+      <div class="video-card">
+    <video controls>
+      <source src="/PROJECT PART 2/IMAGE/64e2f0568c51ee4eecf6ce38bd2c8e1a.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+    <!-- Mission -->
+    <div class="about-card">
+      <h3>Our Mission</h3>
+      <p>We serve delicious meals crafted with the finest local ingredients to bring joy to your plate.</p>
+    </div>
+
+    <!-- Why Choose Us -->
+    <div class="about-card">
+      <h3>Why Choose Us</h3>
+      <ul>
+        <li><i class="fas fa-star"></i> Exceptional service</li>
+        <li><i class="fas fa-utensils"></i> Authentic recipes</li>
+        <li><i class="fas fa-heart"></i> Made with love</li>
+      </ul>
+    </div>
+
+    <!-- Our Team -->
+    <div class="about-card">
+      <h3>Our Team</h3>
+      <p>Our skilled chefs and warm-hearted staff ensure you have a memorable dining experience.</p>
+    </div>
+  </div>
+</section>
+
+<br> <br>
+
+<!-- Services Section -->
+<section class="services" id="services">
+  <h2>Our Services</h2>
+  <div class="service-list">
+    <div class="service-item">
+      <i class="fas fa-utensils"></i>
+      <h3>Delicious Meals</h3>
+      <p>Enjoy a wide variety of dishes made with fresh, high-quality ingredients.</p>
+    </div>
+    <div class="service-item">
+      <i class="fas fa-coffee"></i>
+      <h3>Cozy Atmosphere</h3>
+      <p>Relax in our warm and inviting space, perfect for family gatherings or casual dining.</p>
+    </div>
+    <div class="service-item">
+      <i class="fas fa-concierge-bell"></i>
+      <h3>Exceptional Service</h3>
+      <p>Our friendly staff is dedicated to providing you with a memorable dining experience.</p>
+    </div>
+    <div class="service-item">
+      <i class="fas fa-calendar-alt"></i>
+      <h3>Event Catering</h3>
+      <p>Let us cater your next event with our delicious food and professional service.</p>
+    </div>
+    <div class="service-item">
+      <i class="fas fa-birthday-cake"></i>
+      <h3>Special Occasions</h3>
+      <p>Celebrate birthdays, anniversaries, and other special moments with us.</p>
+    </div>
+    <div class="service-item">
+      <i class="fas fa-shipping-fast"></i>
+      <h3>Delivery Service</h3>
+      <p>Enjoy our delicious meals from the comfort of your home with our fast delivery service.</p>
+    </div>
+  </div>
+</section> <br>
+
+     <!-- Gallery Section -->
+<section id="gallery">
+  <h2>Gallery</h2>
+  <div class="slider-container">
+    <div class="arrow left" onclick="moveSlide(-1)">&#10094;</div>
+    <div class="slider-wrapper">
+      <div class="slider" id="slider">
+
+        <!-- START GALLERY ITEMS -->
+        <!-- Each block is an image pair with hover interaction -->
+
+        <div class="image-container-1">
+          <div class="default-layer">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXhbHcPIRnz_SH2hA7xi6Amrfy-q_FHtmeIg&s" alt="Special Dish" class="default">
+            <div class="caption">Special Dish</div>
+          </div>
+          <div class="hover-layer">
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRRz8gTy_hxSV9ErYaMAM0y0pspeALNVE0gaynPFI6UGqdCySiU7byZLLgfJDkKb_zYW_x7N5CflCD6jbuktUDUJbJzipA9jDeZQ1iONZA" alt="Egusi Soup" class="hover">
+            <div class="caption">Egusi Soup</div>
+          </div>
+        </div>
+
+        <div class="image-container-1">
+          <div class="default-layer">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQzlo_Lbxj6ZgYJ0O_SyQKMo_uBSNfPeCskQ&s" alt="Chicken & Chips" class="default">
+            <div class="caption">Chicken & Chips</div>
+          </div>
+          <div class="hover-layer">
+            <img src="https://www.allrecipes.com/thmb/EJn9SMTzr4QRkdiWdi3ZBgC0Clw=/0x512/filters:no_upscale():max_bytes(150000):strip_icc()/7499757JollofriceChefJohn4x3-d601da10d7e845d1ad4c8656a5b87ed4.jpg" alt="Jollof Rice" class="hover">
+            <div class="caption">Jollof Rice</div>
+          </div>
+        </div>
+
+        <div class="image-container-1">
+          <div class="default-layer">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7OjqJMQGHSa78g0JTrT9vcbigyolygTZbA&s" alt="Dining Area" class="default">
+            <div class="caption">Cozy Dining Area</div>
+          </div>
+          <div class="hover-layer">
+            <img src="https://cdn.guardian.ng/wp-content/uploads/2023/06/Beyonces-Grant-Breathes-Life-Into-North-Londons-Chukus-The-First-Nigerian-Tapas-Restaurant.jpg" alt="Happy Customers" class="hover">
+            <div class="caption">Happy Customers</div>
+          </div>
+        </div>
+
+        <div class="image-container-1">
+          <div class="default-layer">
+            <img src="https://nigeria.tortoisepath.com/wp-content/uploads/2024/09/Alice-Garden-Restaurant-Ikeja-Nigeria-TortoisePathcom-1536x1152.jpeg" alt="Cozy Interior" class="default">
+            <div class="caption">Cozy Interior</div>
+          </div>
+          <div class="hover-layer">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThlD6FfP58XU-7ent2Z9hFXVVg3w4v-XEiSw&s" alt="Outdoor Seating" class="hover">
+            <div class="caption">Outdoor Seating</div>
+          </div>
+        </div>
+
+        <div class="image-container-1">
+          <div class="default-layer">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcjezSCocBb8dk_k3EzJKz8Wq864MPE1AGuA&s" alt="Modern Bar" class="default">
+            <div class="caption">Modern Bar</div>
+          </div>
+          <div class="hover-layer">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy621KSHWPccvp7L2-FIwd8uRB5vNl1QW-9w&s" alt="Artistic Decor" class="hover">
+            <div class="caption">Artistic Decor</div>
+          </div>
+        </div>
+
+        <div class="image-container-1">
+          <div class="default-layer">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYlA2dkaEpurAL5_S76jKarJ-YGWjTq6WMow&s" alt="Chic Lounge" class="default">
+            <div class="caption">Chic Lounge</div>
+          </div>
+          <div class="hover-layer">
+            <img src="https://dinesurf.com/wp-content/uploads/2023/12/399568879_163118100217331_5991388115211200359_n.jpg" alt="Evening Glow" class="hover">
+            <div class="caption">Evening Glow</div>
+          </div>
+        </div>
+
+        <div class="image-container-1">
+          <div class="default-layer">
+            <img src="https://nigeria.tortoisepath.com/wp-content/uploads/2024/09/Alice-Garden-Restaurant-Ikeja-Nigeria-TortoisePathcom-4.jpeg" alt="Classic Touches" class="default">
+            <div class="caption">Classic Touches</div>
+          </div>
+          <div class="hover-layer">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9W9szYDW7cXjAtJ_B3JKwAUpzj6QzTC7R_w&s" alt="Private Booths" class="hover">
+            <div class="caption">Private Booths</div>
+          </div>
+        </div>
+
+        <div class="image-container-1">
+          <div class="default-layer">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB2_v9GgH9VKQvQitmXEV0-y53e8p3IBUGSw&s" alt="Elegant Lighting" class="default">
+            <div class="caption">Elegant Lighting</div>
+          </div>
+          <div class="hover-layer">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOsmzvBbovQHnPCn0OmdyadbbeZmAqGbpVDA&s" alt="Family Table" class="hover">
+            <div class="caption">Family Table</div>
+          </div>
+        </div>
+
+        <div class="image-container-1">
+          <div class="default-layer">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlMsy5Rtzf5z3JC3gTxVDw6FMkhkDgh_w6YA&s" alt="Window Seating" class="default">
+            <div class="caption">Window Seating</div>
+          </div>
+          <div class="hover-layer">
+            <img src="/PROJECT PART 2/IMAGE/c005f12867549656070006bf650579a2.jpg" alt="Tasty Shawarma" class="hover">
+            <div class="caption">Tasty Shawarma</div>
+          </div>
+        </div>
+
+        <div class="image-container-1">
+          <div class="default-layer">
+            <img src="https://www.awesomecuisine.com/wp-content/uploads/2013/07/Grilled-Chicken-Wrap.jpg" alt="Grilled Chicken Wrap" class="default">
+            <div class="caption">Grilled Chicken Wrap</div>
+          </div>
+          <div class="hover-layer">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ80UvRPKaOvLRtKwlWRtXWmPZgHKYac_JL-A&s" alt="Savory Delight Filling" class="hover">
+            <div class="caption">Savory Delight Filling</div>
+          </div>
+        </div>
+
+        <div class="image-container-1">
+          <div class="default-layer">
+            <img src="https://i.pinimg.com/1200x/ea/30/80/ea308047cb58f0310c6afa5ecdf450b9.jpg" alt="Spicy Fried Rice" class="default">
+            <div class="caption">Spicy Fried Rice</div>
+          </div>
+          <div class="hover-layer">
+            <img src="https://i.pinimg.com/1200x/25/a0/88/25a0881b7e0bc4a5fdf59e663e9d966d.jpg" alt="Fried Rice Closeup" class="hover">
+            <div class="caption">Fried Rice Closeup</div>
+          </div>
+        </div>
+
+        <!-- END GALLERY ITEMS -->
+
+      </div>
+    </div>
+    <div class="arrow right" onclick="moveSlide(1)">&#10095;</div>
+  </div>
+</section>
+
+
+   <!-- Login Section -->
+<!-- <div class="login-container" id="Login">
+  <h2>Login</h2>
+  <form action="#" method="post">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required />
+
+    <button type="submit">Login</button>
+  </form>
+  <div class="register-link">
+    Don't have an account? <a href="#Register">Register here</a>
+  </div>
+</div> -->
+
+<!-- Register Section -->
+<!-- <div class="container" id="Register">
+  <h2>Create an Account</h2>
+  <form action="#" method="post">
+    <label for="fullname">Full Name</label>
+    <input type="text" id="fullname" name="fullname" required />
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required minlength="6" />
+
+    <button type="submit">Register</button>
+  </form>
+  <div class="login-link">
+    Already have an account? <a href="#Login">Login here</a>
+  </div>
+</div> -->
+<br>
+<!-- Contact Section -->
+<main class="contact-section" id="contact">
+  <section class="contact-hero">
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you! Use the form or contact details below.</p>
+  </section>
+  <section class="contact-details">
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
+      <ul>
+        <li><i class="fas fa-map-marker-alt"></i> 19 Igbogbo, Ikorodu, Lagos</li>
+        <li><i class="fas fa-phone"></i> +234 070 253 402 02</li>
+        <li><i class="fas fa-envelope"></i> musaritessy5@gmail.com</li>
+        <li><i class="fas fa-clock"></i> Mon–Sun: 10AM – 10PM</li>
+      </ul>
+    </div>
+    <div class="contact-form">
+      <h2>Send a Message</h2>
+      <form id="contactForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Send Message</button>
+        <div id="formMessage" style="margin-top:0.7rem; color:#27ae60; font-weight:600; display:none;">Thank you for contacting us!</div>
+      </form>
+    </div>
+  </section>
+</main><br><br>
+
+<!-- Footer -->
+<footer>
+  <ul class="footer-nav">
+    <li><a href="#"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
+      <li><a href="#services"><i class="fa-solid fa-briefcase"></i> Services</a></li>
+    <li><a href="#contact"><i class="fa-solid fa-phone"></i> Contact</a></li>
+  </ul>
+
+  <div class="social-icons">
+    <a href="https://www.facebook.com/fausat.musari"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://www.instagram.com/itsyourgirl_tesa"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://web.whatsapp.com"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://www.linkedin.com/feed/"><i class="fa-brands fa-linkedin"></i></a>
+  </div>
+
+  <p>&copy; 2025 Delish Bites. All Rights Reserved</p>
+</footer>
+
+ <script src="/PROJECT PART 2/app.js"></script>
+ <!-- Scroll to Top & Bottom Buttons -->
+<div class="scroll-buttons">
+  <button id="scrollToTop"><i class="fas fa-arrow-up"></i></button>
+  <button id="scrollToBottom"><i class="fas fa-arrow-down"></i></button>
+</div>
+
+</body>
+</html>
+
+
+echo "# JAVASCRIPT-FIRST-PROJECT" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Ayo230-bit/JAVASCRIPT-FIRST-PROJECT.git
+git push -u origin main
+
+
+<!-- git remote add origin https://github.com/Ayo230-bit/JAVASCRIPT-FIRST-PROJECT.git
+git branch -M main
+git push -u origin main -->
+ 
