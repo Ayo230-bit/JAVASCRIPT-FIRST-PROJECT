@@ -102,4 +102,69 @@ window.addEventListener("scroll", () => {
     window.location.href = "Login.html"; // Redirect to login page
   });
 
+  // CART 
+  
+// Nigerian sample cart data (simulate localStorage or backend)
+let cart = [
+	{ id: 1, name: "Jollof Rice", price: 1500, quantity: 2 },
+	{ id: 2, name: "Suya Platter", price: 2500, quantity: 1 },
+	{ id: 3, name: "Efo Riro", price: 1800, quantity: 1 }
+];
 
+function renderCart() {
+	const cartItems = document.getElementById('cart-items');
+	const cartTotal = document.getElementById('cart-total');
+	cartItems.innerHTML = '';
+	let total = 0;
+	cart.forEach(item => {
+		const subtotal = item.price * item.quantity;
+		total += subtotal;
+		const tr = document.createElement('tr');
+		tr.innerHTML = `
+			<td>${item.name}</td>
+			<td>${item.price.toLocaleString()}</td>
+			<td>
+				<input type="number" min="1" value="${item.quantity}" data-id="${item.id}" class="qty-input" style="width:50px;">
+			</td>
+			<td>${subtotal.toLocaleString()}</td>
+			<td>
+				<button class="remove-btn" data-id="${item.id}" title="Remove"><i class="fas fa-trash"></i></button>
+			</td>
+		`;
+		cartItems.appendChild(tr);
+	});
+	cartTotal.textContent = `₦${total.toLocaleString()}`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+	renderCart();
+
+	// Quantity change
+	document.getElementById('cart-items').addEventListener('input', function(e) {
+		if (e.target.classList.contains('qty-input')) {
+			const id = parseInt(e.target.getAttribute('data-id'));
+			const qty = parseInt(e.target.value);
+			cart = cart.map(item => item.id === id ? { ...item, quantity: qty > 0 ? qty : 1 } : item);
+			renderCart();
+		}
+	});
+
+	// Remove item
+	document.getElementById('cart-items').addEventListener('click', function(e) {
+		if (e.target.closest('.remove-btn')) {
+			const id = parseInt(e.target.closest('.remove-btn').getAttribute('data-id'));
+			cart = cart.filter(item => item.id !== id);
+			renderCart();
+		}
+	});
+
+	// Checkout button
+	document.getElementById('checkout-btn').addEventListener('click', function() {
+		if (cart.length === 0) {
+			alert('Your cart is empty!');
+			return;
+		}
+		alert('Proceeding to checkout. (Demo only)');
+		// Redirect to payment/delivery page in real system
+	});
+});
