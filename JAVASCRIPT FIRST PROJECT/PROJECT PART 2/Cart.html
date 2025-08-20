@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search | Delish Bites Restaurant</title>
+  <link rel="stylesheet" href="/PROJECT PART 2/app.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Modal Styling */
+    #checkoutModal {
+      display: none; 
+      position: fixed; 
+      top: 0; left: 0; 
+      width: 100%; height: 100%; 
+      background: rgba(0,0,0,0.6); 
+      z-index: 9999; 
+      justify-content: center; 
+      align-items: center;
+    }
+    #checkoutModal .modal-content {
+      background: #fff; 
+      padding: 20px; 
+      border-radius: 10px; 
+      width: 350px; 
+      text-align: center;
+    }
+    #checkoutModal input {
+      width: 100%; 
+      padding: 5px; 
+      margin: 8px 0; 
+      border: 1px solid #ccc; 
+      border-radius: 5px;
+    }
+    #checkoutModal button {
+      padding: 10px 15px; 
+      margin: 5px; 
+      border: none; 
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    #payOnlineBtn { background: #28a745; color: white; }
+    #cashDeliveryBtn { background: #f5c518; color: black; }
+    #cancelBtn { background: #dc3545; color: white; }
+  </style>
+</head>
+<body>
+
+<!-- Video Background -->
+<div class="video-container">
+  <video autoplay loop muted>
+    <source src="/PROJECT PART 2/IMAGE/Ice cream video 4 WhatsApp Video 2025-01-17 at 12.53.12_d6786812.mp4" type="video/mp4" />
+    Your browser does not support video
+  </video>
+</div>
+
+<!-- Navbar -->
+<header>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="/PROJECT PART 2/IMAGE/logo.svg" alt="Logo" width="40" />
+      <h2>Delish <span>Bites</span></h2>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="Index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
+      <li><a href="#gallery"><i class="fa-solid fa-images"></i> Gallery</a></li>
+      <li><a href="#services"><i class="fa-solid fa-briefcase"></i> Services</a></li>
+      <li><a href="#contact"><i class="fa-solid fa-phone"></i> Contact</a></li>
+      <li><a href="Cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart (<span id="cartCount">0</span>)</a></li>
+    </ul>
+
+	 <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="side">
+      <a href="Search.html" class="aa active"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+      <a href="Login.html" class="log"><button>Login</button></a>
+      <a href="Register.html" class="sign"><button>Register</button></a>
+    </div>
+
+ <div class="theme-toggle">
+  <i class="fas fa-sun" id="lightModeIcon"></i>
+  <i class="fas fa-moon" id="darkModeIcon"></i>
+</div>
+
+  </nav>
+</header>
+
+<br><br>
+
+<main>
+  <h1>Your Cart</h1>
+
+  <table id="cartTable" border="1" cellpadding="10" cellspacing="0" style="width:90%; margin:auto; text-align:center;">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div class="total-checkout-container" style="text-align:center; margin-top:20px;">
+    <div class="total" id="cartTotal">Total: ₦0</div>
+    <button id="checkoutBtn">Checkout</button>
+  </div>
+</main>
+
+<!-- Checkout Modal -->
+<div id="checkoutModal">
+  <div class="modal-content">
+    <h2>Checkout</h2>
+    <input type="text" id="custName" placeholder="Full Name" />
+    <input type="text" id="custAddress" placeholder="Delivery Address" />
+    <input type="text" id="custPhone" placeholder="Phone Number" />
+    <div style="margin-top:10px;">
+      <button id="payOnlineBtn">Pay Online</button>
+      <button id="cashDeliveryBtn">Cash on Delivery</button>
+    </div>
+    <br>
+    <button id="cancelBtn" onclick="closeModal()">Cancel</button>
+  </div>
+</div>
+
+<!-- Paystack Script -->
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+function loadCart() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let tbody = document.querySelector("#cartTable tbody");
+  tbody.innerHTML = "";
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    let itemTotal = item.price * item.quantity;
+    total += itemTotal;
+    tbody.innerHTML += `
+      <tr>
+        <td><img src="${item.image || '/PROJECT PART 2/IMAGE/default.jpg'}" alt="${item.name}" style="width:60px; height:60px; border-radius:5px;"></td>
+        <td>${item.name}</td>
+        <td>₦${item.price}</td>
+        <td>
+          <button onclick="updateQuantity(${index}, -1)">-</button>
+          ${item.quantity}
+          <button onclick="updateQuantity(${index}, 1)">+</button>
+        </td>
+        <td>₦${itemTotal.toFixed(2)}</td>
+        <td><button onclick="removeItem(${index})">🗑</button></td>
+      </tr>
+    `;
+  });
+
+  document.getElementById("cartTotal").innerText = "Total: ₦" + total.toFixed(2);
+  updateCartCount();
+}
+
+function updateQuantity(index, change) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart[index].quantity += change;
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCart();
+}
+
+function removeItem(index) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCart();
+}
+
+function updateCartCount() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.getElementById("cartCount").innerText = totalItems;
+}
+
+function openModal() {
+  document.getElementById("checkoutModal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("checkoutModal").style.display = "none";
+}
+
+document.getElementById("checkoutBtn").addEventListener("click", function() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+  openModal();
+});
+
+// Pay Online
+document.getElementById("payOnlineBtn").addEventListener("click", function() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let name = document.getElementById("custName").value.trim();
+  let address = document.getElementById("custAddress").value.trim();
+  let phone = document.getElementById("custPhone").value.trim();
+
+  if (!name || !address || !phone) {
+    alert("⚠ Please fill all fields.");
+    return;
+  }
+
+  let totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+  let handler = PaystackPop.setup({
+    key: 'YOUR_PUBLIC_KEY', // Replace with Paystack public key
+    email: `${phone}@customer.com`,
+    amount: totalAmount * 100,
+    currency: 'NGN',
+    ref: '' + Math.floor((Math.random() * 1000000000) + 1),
+    callback: function(response){
+      alert(`✅ Payment successful!\nRef: ${response.reference}`);
+      localStorage.removeItem("cart");
+      loadCart();
+      closeModal();
+    },
+    onClose: function(){
+      alert('❌ Payment was not completed.');
+    }
+  });
+  handler.openIframe();
+});
+
+// Cash on Delivery
+document.getElementById("cashDeliveryBtn").addEventListener("click", function() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let name = document.getElementById("custName").value.trim();
+  let address = document.getElementById("custAddress").value.trim();
+  let phone = document.getElementById("custPhone").value.trim();
+
+  if (!name || !address || !phone) {
+    alert("⚠ Please fill all fields.");
+    return;
+  }
+
+  let totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  alert(`✅ Order placed for Cash on Delivery!\nName: ${name}\nAddress: ${address}\nPhone: ${phone}\nAmount: ₦${totalAmount}`);
+  
+  localStorage.removeItem("cart");
+  loadCart();
+  closeModal();
+});
+
+loadCart();
+</script>
+<br><br>
+<!-- Footer -->
+<footer>
+  <ul class="footer-nav">
+    <li><a href="Index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+    <li><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
+    <li><a href="#services"><i class="fa-solid fa-briefcase"></i> Services</a></li>
+    <li><a href="#contact"><i class="fa-solid fa-phone"></i> Contact</a></li>
+  </ul>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/fausat.musari"><i class="fa-brands fa-facebook"></i></a>
+    <a href="https://www.instagram.com/itsyourgirl_tesa"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://web.whatsapp.com"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://www.linkedin.com/feed/"><i class="fa-brands fa-linkedin"></i></a>
+  </div>
+  <p>&copy; 2025 Delish Bites. All Rights Reserved</p>
+</footer>
+
+<script src="/PROJECT PART 2/app.js"></script>
+</body>
+</html>
